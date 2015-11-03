@@ -1,0 +1,13 @@
+{
+  "name": "webpack-config-stats",
+  "version": "0.1.0",
+  "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
+  "repository": "izaakschroeder/webpack-config-metalab",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "stats-webpack-plugin": "^0.2.2"
+  },
+  "peerDependencies": {
+    "webpack": "*"
+  }
+}

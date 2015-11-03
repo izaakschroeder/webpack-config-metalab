@@ -1,0 +1,10 @@
+{
+  "name": "webpack-config-optimize",
+  "version": "0.1.0",
+  "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
+  "repository": "izaakschroeder/webpack-config-metalab",
+  "license": "CC0-1.0",
+  "peerDependencies": {
+    "webpack": "*"
+  }
+}
