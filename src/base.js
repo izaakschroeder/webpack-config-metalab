@@ -9,7 +9,6 @@ import json from 'webpack-config-json';
 import optimize from 'webpack-config-optimize';
 import stats from 'webpack-config-stats';
 import root from 'webpack-config-root';
-import vendor from 'webpack-config-vendor';
 
 export default function(config) {
   return partial(
@@ -20,7 +19,6 @@ export default function(config) {
     json,
     stats,
     root,
-    vendor,
     sourceMaps,
     optimize
   );

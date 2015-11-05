@@ -30,5 +30,7 @@ export default partial(
 
 **IMPORTANT**: Right now these are ES6 modules _only_ meaning you have to `import` with something like babel or use `interop-require`.
 
+**IMPORTANT**: If you're adding your own partials that include a `loader` reference you must use `require.resolve` on it for `npm@2`.
+
 [webpack]: https://webpack.github.io
 [webpack-partial]: https://github.com/izaakschroeder/webpack-partial

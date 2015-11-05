@@ -34,16 +34,19 @@ function loaders({ target, external, minimize, loader }) {
     localIdentName: '[name]-[local]-[hash:base64:5]',
     minimize: minimize,
   };
+  const cssLoader = require.resolve('css-loader');
+  const cssLocals = require.resolve('css-loader/locals');
+  const styleLoader = require.resolve('style-loader');
   if (target === 'web') {
     if (external) {
       return ExtractTextPlugin.extract(
-        'style-loader',
-        `${pack('css-loader', config)}!${loader}`
+        styleLoader,
+        `${pack(cssLoader, config)}!${loader}`
       );
     }
-    return `style-loader!${pack('css-loader', config)}!${loader}`;
+    return `${styleLoader}!${pack(cssLoader, config)}!${loader}`;
   }
-  return `${pack('css-loader/locals', config)}!${loader}`;
+  return `${pack(cssLocals, config)}!${loader}`;
 }
 
 module.exports = function postcss({ target, postcss = [] }) {
@@ -60,7 +63,7 @@ module.exports = function postcss({ target, postcss = [] }) {
       loaders: [{
         test: IS_STYLE,
         loader: loaders({
-          loader: 'postcss-loader',
+          loader: require.resolve('postcss-loader'),
           target,
           external,
           minimize,

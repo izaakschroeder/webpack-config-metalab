@@ -10,7 +10,7 @@ export default function expose({ expose = [], context }) {
           test: resolve.sync(module, {
             basedir: context,
           }),
-          loader: `expose-loader?${expose[module]}`,
+          loader: `${require.resolve('expose-loader')}?${expose[module]}`,
         };
       }),
     },

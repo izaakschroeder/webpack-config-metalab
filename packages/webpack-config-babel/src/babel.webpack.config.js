@@ -6,7 +6,7 @@ export default function babel({ babel }) {
         name: 'babel',
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: require.resolve('babel-loader'),
         query: babel,
       }],
     },
