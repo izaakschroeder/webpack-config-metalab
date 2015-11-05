@@ -1,4 +1,3 @@
-
 import { DefinePlugin } from 'webpack';
 import path from 'path';
 import fs from 'fs';
@@ -36,6 +35,7 @@ export default function buildInfo({ context }) {
       new DefinePlugin({
         BUILD_COMMIT: JSON.stringify(commit),
         BUILD_VERSION: JSON.stringify(version),
+        BUILD_DATE: JSON.stringify(Date.now()),
       }),
     ],
   };

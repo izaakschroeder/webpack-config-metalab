@@ -18,15 +18,16 @@ function isExternal(module) {
 }
 
 export default function({ context, target, entry }) {
+  const isNode = target === 'node';
   return {
-    externals: target === 'node' ? [(context, request, cb) => {
+    externals: isNode ? [(context, request, cb) => {
 			// TODO: Make this work properly.
       if (/^[a-z\-0-9]+$/.test(request)) {
         return cb(null, `commonjs ${request}`);
       }
       cb();
     }] : [ ],
-    plugins: target !== 'node' ? [
+    plugins: !isNode ? [
       // This performs the actual bundling of all the vendor files into their
       // own package. See the vendor entry above for more info.
       new SplitByPathPlugin([{

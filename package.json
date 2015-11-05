@@ -1,5 +1,30 @@
 {
+  "name": "webpack-config-metalab",
+  "version": "0.1.0",
+  "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
+  "scripts": {
+    "build": "scripts/build.sh"
+  },
+  "dependencies": {
+    "webpack-partial": "^1.0.0",
+    "webpack-config-babel": "^0.1.0",
+    "webpack-config-build-info": "^0.1.0",
+    "webpack-config-entry": "^0.1.0",
+    "webpack-config-expose": "^0.1.0",
+    "webpack-config-json": "^0.1.0",
+    "webpack-config-optimize": "^0.1.0",
+    "webpack-config-postcss": "^0.1.0",
+    "webpack-config-root": "^0.1.0",
+    "webpack-config-source-maps": "^0.1.0",
+    "webpack-config-stats": "^0.1.0"
+  },
   "peerDependencies": {
     "webpack": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-preset-metalab": "^0.1.1",
+    "eslint": "^1.8.0",
+    "eslint-config-metalab": "^0.3.0"
   }
 }

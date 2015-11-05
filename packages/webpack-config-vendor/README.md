@@ -7,3 +7,5 @@ import vendor from 'webpack-config-vendor';
 
 config(config, vendor);
 ```
+
+[webpack]: https://webpack.github.io

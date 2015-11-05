@@ -7,3 +7,5 @@ import stats from 'webpack-config-stats';
 
 partial(config, stats);
 ```
+
+[webpack]: https://webpack.github.io

@@ -5,6 +5,7 @@ export default function sourcemaps({ target }) {
   const env = process.env.NODE_ENV || 'development';
   const inline = env !== 'production';
 
+  // TODO: Generate real URLs.
   function url() {
     const base = 'https://my-source-maps.com/potato';
     return `${base}/[url]`;

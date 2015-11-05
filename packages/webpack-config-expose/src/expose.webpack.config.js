@@ -1,11 +1,15 @@
 
-export default function expose({ expose = [] }) {
+import resolve from 'resolve';
+
+export default function expose({ expose = [], context }) {
   return {
     module: {
       loaders: Object.keys(expose).map(module => {
         return {
           name: `expose-${module}`,
-          test: require.resolve(module),
+          test: resolve.sync(module, {
+            basedir: context,
+          }),
           loader: `expose-loader?${expose[module]}`,
         };
       }),

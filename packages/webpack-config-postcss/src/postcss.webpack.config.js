@@ -2,7 +2,7 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 // `postcss` modules.
-import autoprefixer from 'autoprefixer-core';
+import autoprefixer from 'autoprefixer';
 import precss from 'precss';
 import cssimport from 'postcss-import';
 
@@ -46,10 +46,13 @@ function loaders({ target, external, minimize, loader }) {
   return `${pack('css-loader/locals', config)}!${loader}`;
 }
 
-export default function postcss({ target, postcss = [] }) {
+module.exports = function postcss({ target, postcss = [] }) {
   const env = process.env.NODE_ENV || 'development';
-  const external = env !== 'development' && target === 'web';
-  const minimize = env === 'production';
+  const hot = process.env.HOT || false;
+  const production = env === 'production';
+
+  const external = (production || !hot) && target === 'web';
+  const minimize = production;
 
   return {
     // Module settings.
@@ -70,6 +73,7 @@ export default function postcss({ target, postcss = [] }) {
         cssimport({
           // Make webpack acknowledge imported files.
           onImport: files => files.forEach(this.addDependency),
+          resolve: (id, { basedir }) => this.resolveSync(basedir, id),
         }),
         precss,
         ...postcss,
@@ -84,7 +88,8 @@ export default function postcss({ target, postcss = [] }) {
         // Some crawlers or things with Javascript disabled prefer normal CSS
         // instead of Javascript injected CSS, so this plugin allows for the
         // collection of the generated CSS into its own file.
-        new ExtractTextPlugin('[name].[contenthash].css'),
+        // .[contenthash]
+        new ExtractTextPlugin('[name].css'),
       ] : [ ]),
     ],
   };
