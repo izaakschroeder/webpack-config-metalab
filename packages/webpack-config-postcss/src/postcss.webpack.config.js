@@ -5,6 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import precss from 'precss';
 import cssimport from 'postcss-import';
+import constants from 'postcss-require';
 
 // Regular expression used to detect what kind of files to process.
 const IS_STYLE = /\.(scss|sass|css)$/;
@@ -57,6 +58,10 @@ module.exports = function postcss({ target, postcss = [] }) {
   const external = (production || !hot) && target === 'web';
   const minimize = production;
 
+  if (!Array.isArray(postcss) && typeof postcss !== 'function') {
+    throw new TypeError('`postcss` must be array or function!');
+  }
+
   return {
     // Module settings.
     module: {
@@ -78,8 +83,34 @@ module.exports = function postcss({ target, postcss = [] }) {
           onImport: files => files.forEach(this.addDependency),
           resolve: (id, { basedir }) => this.resolveSync(basedir, id),
         }),
+        constants({
+          require: (request, _, done) => {
+            this.loadModule(request, (err, source) => {
+              if (err) {
+                done(err);
+              } else {
+                let result = null;
+                try {
+                  result = this.exec(source, request);
+                  // interop for ES6 modules
+                  if (result.__esModule && result.default) {
+                    result = result.default;
+                  }
+                } catch (e) {
+                  done(e);
+                  return;
+                }
+                // Don't need to call `this.addDependency` since the
+                // `loadModule` function takes care of it.
+                done(null, result);
+              }
+            });
+          },
+        }),
         precss,
-        ...postcss,
+        // this::postcss() refs the global function; thanks babel! :|
+        // so using `.call` for now.
+        ...(Array.isArray(postcss) ? postcss : postcss.call(this)),
         autoprefixer({
           browsers: [ 'last 2 versions' ],
         }),
