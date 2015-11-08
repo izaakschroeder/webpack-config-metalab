@@ -1,6 +1,6 @@
 {
   "name": "webpack-config-metalab",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "scripts": {
     "build": "scripts/build.sh"
