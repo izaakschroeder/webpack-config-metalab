@@ -7,9 +7,6 @@ import { optimize } from 'webpack';
 const root = path.dirname(nearest('package.json'));
 
 export default function({ target, name }) {
-  function handle(choice, value) {
-    return target === choice ? value : { };
-  }
   return {
     entry: {
       [name]: path.join(root, 'entry', `${name}.entry.js`),
