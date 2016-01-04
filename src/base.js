@@ -9,6 +9,8 @@ import json from 'webpack-config-json';
 import optimize from 'webpack-config-optimize';
 import stats from 'webpack-config-stats';
 import root from 'webpack-config-root';
+import dev from 'webpack-config-dev-server';
+import sharp from 'webpack-config-sharp';
 
 export default function(config) {
   return partial(
@@ -17,9 +19,11 @@ export default function(config) {
     babel,
     buildInfo,
     json,
+    sharp,
     stats,
     root,
     sourceMaps,
+    dev,
     optimize
   );
 }

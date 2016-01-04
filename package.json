@@ -7,17 +7,19 @@
     "build": "scripts/build.sh"
   },
   "dependencies": {
-    "webpack-partial": "^1.0.0",
     "webpack-config-babel": "^0.1.1",
     "webpack-config-build-info": "^0.1.0",
+    "webpack-config-dev-server": "^0.1.0",
     "webpack-config-entry": "^0.1.0",
     "webpack-config-expose": "^0.1.1",
     "webpack-config-json": "^0.1.1",
     "webpack-config-optimize": "^0.1.0",
     "webpack-config-postcss": "^0.1.6",
     "webpack-config-root": "^0.1.0",
+    "webpack-config-sharp": "^0.1.1",
     "webpack-config-source-maps": "^0.1.0",
-    "webpack-config-stats": "^0.1.0"
+    "webpack-config-stats": "^0.1.0",
+    "webpack-partial": "^1.0.0"
   },
   "peerDependencies": {
     "webpack": "*"
