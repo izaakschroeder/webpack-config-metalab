@@ -1,22 +1,18 @@
 
-export default function() {
+export default function sharp() {
   return {
     module: {
-      loaders: [{
+      loaders: [ {
+        name: 'sharp',
         test: /\.(gif|jpe?g|png|tiff|svg)(\?.*)?$/,
-        loader: 'sharp-loader',
+        loader: require.resolve('sharp-loader'),
         query: {
           name: '[name].[hash:8].[ext]',
           presets: {
-            favicon: {
-              size: 32,
-              format: 'png',
-            },
             default: {
-              format: [ 'webp', 'png', 'jpeg' ],
               density: [ 1, 2, 3 ],
             },
-            prefetch: {
+            inline: {
               format: 'jpeg',
               mode: 'cover',
               blur: 100,
@@ -26,7 +22,7 @@ export default function() {
             },
           },
         },
-      }],
+      } ],
     },
   };
 }
