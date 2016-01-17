@@ -13,6 +13,7 @@
     "webpack-config-dev-server": "^0.1.0",
     "webpack-config-entry": "^0.1.0",
     "webpack-config-expose": "^0.1.1",
+    "webpack-config-hot": "^0.1.0",
     "webpack-config-json": "^0.1.1",
     "webpack-config-optimize": "^0.1.0",
     "webpack-config-postcss": "^0.1.6",

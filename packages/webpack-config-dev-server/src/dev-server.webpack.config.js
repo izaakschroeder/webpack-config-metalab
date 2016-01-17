@@ -1,4 +1,3 @@
-import { HotModuleReplacementPlugin, NoErrorsPlugin } from 'webpack';
 import { runtime } from 'webpack-udev-server';
 
 function inject(entries, module) {
@@ -16,7 +15,7 @@ function inject(entries, module) {
   throw new TypeError();
 }
 
-export default function devServer({ entry, target, hot }) {
+export default function devServer({ entry, target, hot = process.env.HOT }) {
   const env = process.env.NODE_ENV || 'development';
 
   // Don't use for anything but development.
@@ -30,12 +29,5 @@ export default function devServer({ entry, target, hot }) {
       entry,
       runtime({ target, hot })
     ),
-    plugins: hot ? [
-      // Add webpack's HMR runtime.
-      new HotModuleReplacementPlugin(),
-
-      // Don't generate bundles with errors so HMR doesn't bomb the app.
-      new NoErrorsPlugin(),
-    ] : [ ],
   };
 }

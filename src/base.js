@@ -10,6 +10,7 @@ import optimize from 'webpack-config-optimize';
 import stats from 'webpack-config-stats';
 import root from 'webpack-config-root';
 import dev from 'webpack-config-dev-server';
+import hot from 'webpack-config-hot';
 import sharp from 'webpack-config-sharp';
 
 export default function(config) {
@@ -24,6 +25,7 @@ export default function(config) {
     root,
     sourceMaps,
     dev,
+    hot,
     optimize
   );
 }
