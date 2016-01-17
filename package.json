@@ -4,7 +4,7 @@
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "scripts": {
     "prepublish": "./node_modules/.bin/babel -d ./ ./src/",
-    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore ."
+    "lint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
     "webpack-config-babel": "^0.1.1",
