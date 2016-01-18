@@ -1,10 +1,9 @@
-
 import { ProvidePlugin } from 'webpack';
 
 export default function() {
   return {
     module: {
-      loaders: [{
+      loaders: [ {
         name: 'babel',
         query: {
           plugins: [
@@ -12,7 +11,7 @@ export default function() {
             'west-mocha',
           ],
         },
-      }],
+      } ],
     },
     plugins: [
       new ProvidePlugin({
