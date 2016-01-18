@@ -10,7 +10,7 @@
   "dependencies": {
     "webpack-config-babel": "^0.1.1",
     "webpack-config-build-info": "^0.1.0",
-    "webpack-config-dev-server": "^0.1.0",
+    "webpack-config-dev-server": "^0.2.0",
     "webpack-config-entry": "^0.1.0",
     "webpack-config-expose": "^0.1.1",
     "webpack-config-hot": "^0.1.0",
