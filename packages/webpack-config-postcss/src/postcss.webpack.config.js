@@ -65,7 +65,7 @@ module.exports = function postcss({ target, postcss = [] }) {
   return {
     // Module settings.
     module: {
-      loaders: [{
+      loaders: [ {
         test: IS_STYLE,
         loader: loaders({
           loader: require.resolve('postcss-loader'),
@@ -73,7 +73,7 @@ module.exports = function postcss({ target, postcss = [] }) {
           external,
           minimize,
         }),
-      }],
+      } ],
     },
 
     postcss() {
@@ -127,4 +127,4 @@ module.exports = function postcss({ target, postcss = [] }) {
       ] : [ ]),
     ],
   };
-}
+};

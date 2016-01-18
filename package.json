@@ -1,10 +1,11 @@
 {
   "name": "webpack-config-metalab",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore .",
-    "build": "scripts/build.sh"
+    "prepublish": "./node_modules/.bin/babel -d ./ ./src/",
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "npm run lint"
   },
   "dependencies": {
     "webpack-config-babel": "^0.1.1",
@@ -27,7 +28,10 @@
   "devDependencies": {
     "babel-cli": "^6.0.0",
     "babel-preset-metalab": "^0.1.1",
-    "eslint": "^2.0.0-alpha-2",
-    "eslint-config-metalab": "^1.0.0-rc.1"
+    "eslint": "^1.10.3",
+    "eslint-config-metalab": "^1.0.0-rc.4",
+    "eslint-plugin-filenames": "^0.2.0",
+    "eslint-plugin-import": "^0.11.0",
+    "eslint-plugin-react": "^3.11.2"
   }
 }
