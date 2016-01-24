@@ -1,4 +1,5 @@
 import { DefinePlugin } from 'webpack';
+import partial from 'webpack-partial';
 import path from 'path';
 import fs from 'fs';
 import { execFileSync } from 'child_process';
@@ -20,7 +21,9 @@ function pkg(root) {
   return JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 }
 
-export default function buildInfo({ context }) {
+export default function buildInfo(config) {
+  const { context } = config;
+
   // TODO: Any other useful information?
 
   // SOURCE_VERSION is set by Heroku. Can possibly be used by other build
@@ -30,7 +33,7 @@ export default function buildInfo({ context }) {
     'unknown';
   const version = pkg(context).version;
 
-  return {
+  return partial(config, {
     plugins: [
       new DefinePlugin({
         BUILD_COMMIT: JSON.stringify(commit),
@@ -38,5 +41,5 @@ export default function buildInfo({ context }) {
         BUILD_DATE: JSON.stringify(Date.now()),
       }),
     ],
-  };
+  });
 }

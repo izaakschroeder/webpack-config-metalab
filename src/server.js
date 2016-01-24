@@ -1,13 +1,6 @@
-import partial from 'webpack-partial';
-
+import compose from 'lodash/flowRight';
 import postcss from 'webpack-config-postcss';
 
-import base from './base';
-
-export default function(config) {
-  return partial(
-    config,
-    base,
-    postcss
-  );
-}
+export default compose(
+  postcss
+);

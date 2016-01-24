@@ -4,13 +4,13 @@
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "repository": "izaakschroeder/webpack-config-metalab",
   "license": "CC0-1.0",
-  "main": "dist/vendor.webpack.config.js",
   "scripts": {
     "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
   "dependencies": {
-    "webpack-split-by-path": "^0.0.6",
-    "runtime-webpack-plugin": "^0.1.0"
+    "runtime-webpack-plugin": "^0.1.0",
+    "webpack-partial": "^1.0.0",
+    "webpack-split-by-path": "^0.0.6"
   },
   "peerDependencies": {
     "webpack": "*"

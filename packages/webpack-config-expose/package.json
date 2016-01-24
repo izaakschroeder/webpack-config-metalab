@@ -4,13 +4,13 @@
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "repository": "izaakschroeder/webpack-config-metalab",
   "license": "CC0-1.0",
-  "main": "dist/expose.webpack.config.js",
   "scripts": {
     "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
   "dependencies": {
+    "expose-loader": "^0.7.0",
     "resolve": "^1.1.6",
-    "expose-loader": "^0.7.0"
+    "webpack-partial": "^1.0.0"
   },
   "peerDependencies": {
     "webpack": "*"

@@ -4,12 +4,12 @@
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "repository": "izaakschroeder/webpack-config-metalab",
   "license": "CC0-1.0",
-  "main": "dist/stats.webpack.config.js",
   "scripts": {
     "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
   "dependencies": {
-    "stats-webpack-plugin": "^0.3.0"
+    "stats-webpack-plugin": "^0.3.0",
+    "webpack-partial": "^1.0.0"
   },
   "peerDependencies": {
     "webpack": "*"

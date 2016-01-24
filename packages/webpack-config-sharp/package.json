@@ -4,13 +4,13 @@
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "repository": "izaakschroeder/webpack-config-metalab",
   "license": "CC0-1.0",
-  "main": "dist/sharp.webpack.config.js",
   "scripts": {
     "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
   "dependencies": {
+    "sharp": "^0.12.1",
     "sharp-loader": "^0.2.1",
-    "sharp": "^0.12.1"
+    "webpack-partial": "^1.0.0"
   },
   "peerDependencies": {
     "webpack": "*"

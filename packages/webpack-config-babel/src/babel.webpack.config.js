@@ -1,6 +1,8 @@
+import partial from 'webpack-partial';
 
-export default function babel({ babel }) {
-  return {
+export default function babel(config) {
+  const { babel } = config;
+  return partial(config, {
     module: {
       loaders: [ {
         name: 'babel',
@@ -10,5 +12,5 @@ export default function babel({ babel }) {
         query: babel,
       } ],
     },
-  };
+  });
 }

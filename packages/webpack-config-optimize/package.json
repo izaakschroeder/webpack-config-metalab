@@ -4,7 +4,6 @@
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "repository": "izaakschroeder/webpack-config-metalab",
   "license": "CC0-1.0",
-  "main": "dist/optimize.webpack.config.js",
   "scripts": {
     "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
@@ -14,5 +13,8 @@
   "devDependencies": {
     "babel-cli": "^6.4.5",
     "babel-preset-metalab": "^0.2.0"
+  },
+  "dependencies": {
+    "webpack-partial": "^1.0.0"
   }
 }

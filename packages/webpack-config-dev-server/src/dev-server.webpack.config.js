@@ -1,3 +1,4 @@
+import partial from 'webpack-partial';
 import { runtime } from 'webpack-udev-server';
 
 function inject(entries, module) {
@@ -15,19 +16,20 @@ function inject(entries, module) {
   throw new TypeError();
 }
 
-export default function devServer({ entry, target, hot = process.env.HOT }) {
+export default function devServer(config) {
+  const { entry, target, hot = process.env.HOT } = config;
   const env = process.env.NODE_ENV || 'development';
 
   // Don't use for anything but development.
   if (env !== 'development') {
-    return { };
+    return config;
   }
 
   // Rewrite all the entry points to include HMR code.
-  return {
+  return partial(config, {
     entry: inject(
       entry,
       runtime({ target, hot })
     ),
-  };
+  });
 }
