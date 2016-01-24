@@ -6,7 +6,7 @@
   "license": "CC0-1.0",
   "main": "dist/sharp.webpack.config.js",
   "scripts": {
-    "prepublish": "./node_modules/.bin/babel -d dist src"
+    "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
   "dependencies": {
     "sharp-loader": "^0.2.1",
@@ -16,7 +16,7 @@
     "webpack": "*"
   },
   "devDependencies": {
-    "babel-cli": "^6.0.0",
-    "babel-preset-metalab": "^0.1.1"
+    "babel-cli": "^6.4.5",
+    "babel-preset-metalab": "^0.2.0"
   }
 }

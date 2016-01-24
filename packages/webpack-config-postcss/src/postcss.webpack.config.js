@@ -76,22 +76,22 @@ module.exports = function postcss({ target, postcss = [] }) {
       } ],
     },
 
-    postcss() {
+    postcss(webpack) {
       return [
         cssimport({
           // Make webpack acknowledge imported files.
-          onImport: files => files.forEach(this.addDependency),
-          resolve: (id, { basedir }) => this.resolveSync(basedir, id),
+          onImport: files => files.forEach(dep => webpack.addDependency(dep)),
+          resolve: (id, { basedir }) => webpack.resolveSync(basedir, id),
         }),
         constants({
           require: (request, _, done) => {
-            this.loadModule(request, (err, source) => {
+            webpack.loadModule(request, (err, source) => {
               if (err) {
                 done(err);
               } else {
                 let result = null;
                 try {
-                  result = this.exec(source, request);
+                  result = webpack.exec(source, request);
                   // interop for ES6 modules
                   if (result.__esModule && result.default) {
                     result = result.default;
@@ -108,9 +108,7 @@ module.exports = function postcss({ target, postcss = [] }) {
           },
         }),
         precss,
-        // this::postcss() refs the global function; thanks babel! :|
-        // so using `.call` for now.
-        ...(Array.isArray(postcss) ? postcss : postcss.call(this)),
+        ...(Array.isArray(postcss) ? postcss : postcss(webpack)),
         autoprefixer({
           browsers: [ 'last 2 versions' ],
         }),
