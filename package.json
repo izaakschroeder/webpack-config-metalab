@@ -3,7 +3,7 @@
   "version": "0.2.2",
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "scripts": {
-    "prepublish": "./node_modules/.bin/babel -d ./ ./src/",
+    "prepublish": "./node_modules/.bin/babel  -s -d ./ ./src/",
     "lint": "./node_modules/.bin/eslint .",
     "test": "npm run lint"
   },
@@ -27,8 +27,8 @@
     "webpack": "*"
   },
   "devDependencies": {
-    "babel-cli": "^6.0.0",
-    "babel-preset-metalab": "^0.1.1",
+    "babel-cli": "^6.4.5",
+    "babel-preset-metalab": "^0.2.0",
     "eslint": "^1.10.3",
     "eslint-config-metalab": "^1.0.0-rc.4",
     "eslint-plugin-filenames": "^0.2.0",
