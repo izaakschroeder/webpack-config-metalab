@@ -18,6 +18,7 @@ export default compose(
   sourceMaps,
   root,
   stats,
+  sharp,
   json,
   buildInfo,
   babel,
