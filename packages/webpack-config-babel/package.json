@@ -9,7 +9,8 @@
     "prepublish": "./node_modules/.bin/babel -s -d dist src"
   },
   "dependencies": {
-    "babel-loader": "^6.2.1"
+    "babel-loader": "^6.2.1",
+    "webpack-partial": "^1.0.0"
   },
   "peerDependencies": {
     "webpack": "*"

@@ -1,6 +1,4 @@
-
-import partial from 'webpack-partial';
-
+import compose from 'lodash/flowRight';
 import entry from 'webpack-config-entry';
 import buildInfo from 'webpack-config-build-info';
 import sourceMaps from 'webpack-config-source-maps';
@@ -13,19 +11,16 @@ import dev from 'webpack-config-dev-server';
 import hot from 'webpack-config-hot';
 import sharp from 'webpack-config-sharp';
 
-export default function(config) {
-  return partial(
-    config,
-    entry,
-    babel,
-    buildInfo,
-    json,
-    sharp,
-    stats,
-    root,
-    sourceMaps,
-    dev,
-    hot,
-    optimize
-  );
-}
+export default compose(
+  optimize,
+  hot,
+  dev,
+  sourceMaps,
+  root,
+  stats,
+  sharp,
+  json,
+  buildInfo,
+  babel,
+  entry
+);

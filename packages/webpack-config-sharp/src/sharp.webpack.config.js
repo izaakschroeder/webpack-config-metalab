@@ -1,6 +1,7 @@
+import partial from 'webpack-partial';
 
-export default function sharp() {
-  return {
+export default function sharp(config) {
+  return partial(config, {
     module: {
       loaders: [ {
         name: 'sharp',
@@ -24,5 +25,5 @@ export default function sharp() {
         },
       } ],
     },
-  };
+  });
 }

@@ -1,3 +1,4 @@
+import partial from 'webpack-partial';
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
@@ -50,7 +51,8 @@ function loaders({ target, external, minimize, loader }) {
   return `${pack(cssLocals, config)}!${loader}`;
 }
 
-module.exports = function postcss({ target, postcss = [] }) {
+module.exports = function postcss(config) {
+  const { target, postcss = [] } = config;
   const env = process.env.NODE_ENV || 'development';
   const hot = process.env.HOT || false;
   const production = env === 'production';
@@ -62,7 +64,7 @@ module.exports = function postcss({ target, postcss = [] }) {
     throw new TypeError('`postcss` must be array or function!');
   }
 
-  return {
+  return partial(config, {
     // Module settings.
     module: {
       loaders: [ {
@@ -124,5 +126,5 @@ module.exports = function postcss({ target, postcss = [] }) {
         new ExtractTextPlugin('[name].css'),
       ] : [ ]),
     ],
-  };
+  });
 };

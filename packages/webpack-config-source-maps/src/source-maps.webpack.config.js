@@ -1,7 +1,8 @@
-
+import partial from 'webpack-partial';
 import { BannerPlugin, SourceMapDevToolPlugin } from 'webpack';
 
-export default function sourcemaps({ target }) {
+export default function sourcemaps(config) {
+  const { target } = config;
   const env = process.env.NODE_ENV || 'development';
   const inline = env !== 'production';
 
@@ -11,7 +12,7 @@ export default function sourcemaps({ target }) {
     return `${base}/[url]`;
   }
 
-  return {
+  return partial(config, {
     // Embed source map support for sane debugging. This kinda cheats by
     // writing source map hooks at the top of every entrypoint.
     plugins: [
@@ -28,5 +29,5 @@ export default function sourcemaps({ target }) {
         columns: true,
       }),
     ],
-  };
+  });
 }

@@ -1,10 +1,12 @@
+import partial from 'webpack-partial';
 import path from 'path';
 import RuntimePlugin from 'runtime-webpack-plugin';
 import SplitByPathPlugin from 'webpack-split-by-path';
 
-export default function({ context, target }) {
+export default function(config) {
+  const { context, target } = config;
   const isNode = target === 'node';
-  return {
+  return partial({
     externals: isNode ? [ (context, request, cb) => {
 			// TODO: Make this work properly.
       if (/^[a-z\-0-9]+$/.test(request)) {
@@ -21,5 +23,5 @@ export default function({ context, target }) {
       } ]),
       new RuntimePlugin('init'),
     ] : [ ],
-  };
+  });
 }

@@ -1,8 +1,9 @@
-
+import partial from 'webpack-partial';
 import resolve from 'resolve';
 
-export default function expose({ expose = [], context }) {
-  return {
+export default function expose(config) {
+  const { expose = [], context } = config;
+  return partial(config, {
     module: {
       loaders: Object.keys(expose).map(module => {
         return {
@@ -14,5 +15,5 @@ export default function expose({ expose = [], context }) {
         };
       }),
     },
-  };
+  });
 }

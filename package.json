@@ -8,6 +8,7 @@
     "test": "npm run lint"
   },
   "dependencies": {
+    "lodash": "^4.0.0",
     "webpack-config-babel": "^0.1.1",
     "webpack-config-build-info": "^0.1.0",
     "webpack-config-dev-server": "^0.2.0",
